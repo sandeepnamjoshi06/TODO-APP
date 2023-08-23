@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>Bootstrap Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body class="p-3 m-0 border-0 bd-example m-0 border-0">
+
+    <div>
+        <form class="row g-3" action="/" method="POST">
+            <div class="col-auto">
+                <label for="inputPassword2" class="visually-hidden">Title</label>
+                <input type="text" class="form-control" name="title">
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-3" fdprocessedid="y1rjc">Save</button>
+            </div>
+        </form>
+
+        <table class="table">
+            {% if alltodo|length==0 %}
+            <div class="alert alert-success" role="alert">
+                Please add a record
+              </div>
+
+            {% else %}
+            <thead>
+                <tr>
+                    <th scope="col">sno</th>
+                    <th scope="col">title</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for todo in alltodo %}
+
+                <tr>
+                    <th scope="row">{{todo.sno}}</th>
+                    <td>{{todo.title}}</td>
+                    <td><a href="/delete/{{todo.sno}}" <button type="button"
+                            class="btn btn-outline-secondary btn-sm mx-2">Delete</button>
+                            <a href="/update/{{todo.sno}}" <button type="button"
+                                class="btn btn-outline-info btn-sm mx-2">update</button>
+
+                    </td>
+
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+
+
+
+    <!-- End Example Code -->
+</body>
+
+</html>
